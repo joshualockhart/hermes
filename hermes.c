@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
 		print_help();
 
 	char c;
-	while ((c = getopt(argc, argv, "f:hp:v")) != -1) {
+	while ((c = getopt(argc, argv, "hp:v")) != -1) {
 
 		switch(c){
 
