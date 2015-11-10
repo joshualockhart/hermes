@@ -11,7 +11,7 @@ void print_help(void){
 	printf("LiDE - v0.0.1.3 \n \
 			-h: Prints this help.\n \
 			-v: Be verbose.\n \
-			-p: Specify a port to listen on. Default 9999.\n");
+			-p: Specify a port to listen on. Default 31337.\n");
 	exit(0);
 }
 
