@@ -1,13 +1,14 @@
-hermes : hermes.o nwio.o 
-	gcc -o hermes hermes.o nwio.o  -Wall
+main : LiDE.o nwio.o 
+	gcc -o lide LiDE.o nwio.o -Wall
 
-main.o : hermes.c 
-	gcc -c hermes.c
+LiDE.o : LiDE.c 
+	gcc -c LiDE.c
 
 nwio.o : nwio.c 
 	gcc -c nwio.c
 
 clean : 
-	rm hermes hermes.o nwio.o
+	rm LiDE.o nwio.o
 
-
+clean-all : 
+	rm lide LiDE.o nwio.o *~
