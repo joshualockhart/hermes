@@ -1,10 +1,10 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <arpa/inet.h>
-#include <sys/socket.h>
-#include "LiDE.h"
+#include <stdio.h>        //
+#include <unistd.h>       //
+#include <string.h>       //
+#include <stdlib.h>       //
+#include <arpa/inet.h>    //
+#include <sys/socket.h>   //
+#include "LiDE.h"         //
 
 /*
  * Send the file to the currently connected client, return number of bytes sent or 0 on error. At the minute
@@ -46,7 +46,7 @@ int send_file(FILE *fd, int connfd)
 
 		total_bytes_sent += bytes_sent;
 		if(be_verbose)
-			printf("%d / %d\r\e[?25l", total_bytes_sent, filesize); // the "\r" refreshes current line and "\e[?25l" removes cursor
+			printf("\x1B[31m%d\x1B[32m / %d\040bytes\r\e[?25l\033[0m", total_bytes_sent, filesize); // the "\r" refreshes current line and "\e[?25l" removes cursor
 	}
 
 	// send the last incomplete chunk at the end of the file.
@@ -57,14 +57,14 @@ int send_file(FILE *fd, int connfd)
 
 	total_bytes_sent += bytes_sent;
 	if(be_verbose)
-		printf("%d / %d\n", total_bytes_sent, filesize);
+		printf("\x1B[32m%d / %d\040bytes\033[0m\n", total_bytes_sent, filesize);
 
 	free(chunk);
 	return total_bytes_sent;
 }
 
 /*
- * We wait for someone to ask for our file.
+ * Wait for someone to ask for our file.
  */
 
 int listen_for_inbound_requests(int port, FILE *filename_fd)
@@ -104,11 +104,11 @@ int listen_for_inbound_requests(int port, FILE *filename_fd)
 	
 
 	if ((listen(listenfd, 5)) == -1){ // We don't need a huge backlog (arg 2). 
-		perror("Listen error");
+		perror("Send error");
 		exit(1);
 	}
 
-	printf("Listening on port %d...\n", ntohs(serv.sin_port));
+	printf("\x1B[32mSending on port %d...\033[0m\n", ntohs(serv.sin_port));
 	
 
 	for (;;) {
@@ -116,12 +116,12 @@ int listen_for_inbound_requests(int port, FILE *filename_fd)
 		connfd = accept(listenfd, (struct sockaddr *) &cli, &len);
 
 		inet_ntop(AF_INET, &(cli.sin_addr), ip_buff, INET_ADDRSTRLEN);
-		printf("Connection from %s, port %d\n", ip_buff, ntohs(cli.sin_port));
+		printf("\x1B[32mConnection from %s, port %d\033[0m\n", ip_buff, ntohs(cli.sin_port));
 
 		if ((bytes_sent = send_file(filename_fd, connfd)) < 0)
-			printf("Error transferring file.\n\e[?25h");
+			printf("\x1B[31mError transferring file.\033[0m\n\e[?25h");
 		else
-			printf("Finished transfer to %s. %d bytes sent.\n\e[?25h", ip_buff, bytes_sent);exit(0);
+			printf("\x1B[32mFinished transfer to %s\n\%d bytes sent.\033[0m\n\e[?25h", ip_buff, bytes_sent);exit(0);
 	}
 
 	free(ip_buff);

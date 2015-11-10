@@ -9,3 +9,6 @@ nwio.o : nwio.c
 
 clean : 
 	rm LiDE.o nwio.o
+
+clean-all : 
+	rm lide LiDE.o nwio.o *~
