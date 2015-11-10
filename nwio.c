@@ -1,9 +1,9 @@
-#include <stdio.h>        //
-#include <unistd.h>       //
-#include <string.h>       //
-#include <stdlib.h>       //
-#include <arpa/inet.h>    //
-#include <sys/socket.h>   //
+#include <stdio.h>        // C library to perform Input/Output operations
+#include <unistd.h>       // C standard symbolic constants and types
+#include <string.h>       // C Strings
+#include <stdlib.h>       // C Standard General Utilities Library
+#include <arpa/inet.h>    // C definitions for internet operations
+#include <sys/socket.h>   // C Internet Protocol family
 #include "LiDE.h"         //
 
 /*
@@ -46,7 +46,7 @@ int send_file(FILE *fd, int connfd)
 
 		total_bytes_sent += bytes_sent;
 		if(be_verbose)
-			printf("\x1B[31m%d\x1B[32m / %d\040bytes\r\e[?25l\033[0m", total_bytes_sent, filesize); // the "\r" refreshes current line and "\e[?25l" removes cursor
+			printf("\x1B[31m%d\x1B[32m of %d\040bytes\r\e[?25l\033[0m", total_bytes_sent, filesize); // the "\r" refreshes current line and "\e[?25l" removes cursor
 	}
 
 	// send the last incomplete chunk at the end of the file.
@@ -57,7 +57,7 @@ int send_file(FILE *fd, int connfd)
 
 	total_bytes_sent += bytes_sent;
 	if(be_verbose)
-		printf("\x1B[32m%d / %d\040bytes\033[0m\n", total_bytes_sent, filesize);
+		printf("\x1B[32m%d of %d\040bytes\033[0m\n", total_bytes_sent, filesize);
 
 	free(chunk);
 	return total_bytes_sent;
