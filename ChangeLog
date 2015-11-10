@@ -23,3 +23,8 @@ v0.0.1.1
 -Fixed version.
 -Fixed hang, on end of file transfer.
 -Patched Makefile
+
+v0.0.1.2
+-Removed option for verbose, always verbose.
+-Changed default port.
+-Removed new line for progress status (verbose).
