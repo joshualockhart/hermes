@@ -41,4 +41,9 @@ v0.0.1.5
 -Added colors to output.
 -Cleaned up Makefile
 
+v0.0.2.0
+-Added MD5 function for source file
+
+v0.0.2.1
+-Fixed MD5 function error displayed if no file available.
 
