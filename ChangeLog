@@ -31,3 +31,7 @@ v0.0.1.2
 
 v0.0.1.3
 -Progress status removed cursor (looks cleaner).
+
+v0.0.1.4
+-Re-enable cursor after program termination.
+
