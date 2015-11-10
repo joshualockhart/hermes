@@ -28,3 +28,6 @@ v0.0.1.2
 -Removed option for verbose, always verbose.
 -Changed default port.
 -Removed new line for progress status (verbose).
+
+v0.0.1.3
+-Progress status removed cursor (looks cleaner).
