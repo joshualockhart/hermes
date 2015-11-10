@@ -46,7 +46,7 @@ int send_file(FILE *fd, int connfd)
 
 		total_bytes_sent += bytes_sent;
 		if(be_verbose)
-			printf("%d / %d\n", total_bytes_sent, filesize);
+			printf("%d / %d\r", total_bytes_sent, filesize); // the "\r" refreshes current line
 	}
 
 	// send the last incomplete chunk at the end of the file.
