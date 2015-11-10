@@ -1,6 +1,25 @@
+LiDE "Linux Disk Extractor"
+
+As of version 0.0.1.1 it has the same functionality as running a string of commands:
+-dd to capture a file (more like cat though)
+-pv "pipe viewer" to view the progress of the file transfer
+-netcat to send the file over the network
+All packaged into a small executable less than 15Kb in size.
+
+The following command could accomplish the same results:
+cat File_to_Transfer | pv | nc -l -p 31337
+
+
 Summary ChangeLog
 
 v0.0.0.1
 Original source code: 
 https://github.com/joshualockhart/Hermes
 by Josh Lockhart, joshualockhart@gmail.com, 30 Oct 2010
+*Thanks to Joshua Lockhart for getting my project off the ground. 
+
+v0.0.1.1
+-Renamed files.
+-Fixed version.
+-Fixed hang, on end of file transfer.
+-Patched Makefile
