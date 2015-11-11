@@ -8,34 +8,29 @@
 #include "LiDE.h"
 
 void print_help(void){
-	printf("LiDE - v0.0.1.1 \n \
+	printf("LiDE - v0.0.1.2 \n \
 			-h: Prints this help.\n \
-			-v: Be verbose.\n \
-			-p: Specify a port to listen on. Default 9999.\n");
+			-p: Specify a port to listen on. Default 31337.\n");
 	exit(0);
 }
 
 int main(int argc, char *argv[])
 {
 
-	be_verbose = 0;
+	be_verbose = 1;
 	FILE *filename_fd;
 	char *filename_to_serve;
-	int listen_port = htons(9999);
+	int listen_port = htons(31337);
 
 	if (argc < 2)
 		print_help();
 
 	char c;
-	while ((c = getopt(argc, argv, "hvp:")) != -1) {
+	while ((c = getopt(argc, argv, "hp:")) != -1) {
 		switch(c){
 
 			case 'h':
 				print_help();
-				break;
-			case 'v':
-				printf("Being verbose.\n");
-				be_verbose = 1;
 				break;
 			case 'p':
 				if ((optarg != NULL) && (optarg[0] != '\0')){
