@@ -119,9 +119,9 @@ int listen_for_inbound_requests(int port, FILE *filename_fd)
 		printf("Connection from %s, port %d\n", ip_buff, ntohs(cli.sin_port));
 
 		if ((bytes_sent = send_file(filename_fd, connfd)) < 0)
-			printf("Error transferring file.\n");
+			printf("Error transferring file.\n\e[?25h");
 		else
-			printf("Finished transfer to %s. %d bytes sent.\n", ip_buff, bytes_sent);exit(0);
+			printf("Finished transfer to %s. %d bytes sent.\n\e[?25h", ip_buff, bytes_sent);exit(0);
 	}
 
 	free(ip_buff);

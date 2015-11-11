@@ -8,9 +8,10 @@
 #include "LiDE.h"
 
 void print_help(void){
-	printf("LiDE - v0.0.1.3 \n \
+	printf("LiDE - v0.0.1.4 \n \
 			-h: Prints this help.\n \
-			-p: Specify a port to listen on. Default 31337.\n");
+			-v: Be verbose.\n \
+			-p: Specify a port to listen on. Default 9999.\n");
 	exit(0);
 }
 
