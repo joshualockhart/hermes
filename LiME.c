@@ -1,41 +1,42 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <arpa/inet.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include "hermes.h"
+#include <stdio.h>        // C library to perform Input/Output operations
+#include <unistd.h>       //
+#include <string.h>       // C Strings
+#include <stdlib.h>       // C Standard General Utilities Library
+#include <arpa/inet.h>    //
+#include <sys/socket.h>   //
+#include <sys/types.h>    //
+#include "LiDE.h"         //
 
 void print_help(void){
-	printf("Hermes - v0.1\n\nhermes <filename> [-h] [-p <port>] \n \
-			-h: Prints this help.\n \
-			-v: Be verbose.\n \
-			-p: Specify a port to listen on. Default 9999.\n");
+	printf("\x1B[33mLiDE (\033[1mLi\033[22mnux \033[1mD\033[22misk \033[1mE\033[22mxtractor) - v0.0.1.5\033[0m\n\n\
+LiDE is a very small fileserver.\n\
+To host a file, do\n\n\
+$ \x1B[32m./lide <filename>\033[0m              Will use default port 31337\n\
+    or\n\
+$ \x1B[32m./lide -p <port> <filename>\033[0m    To specify a port to send on.\n\n\
+$ \x1B[32m./lide [-h]\033[0m                    Prints this help.\n\n\
+Then to retrieve it on another host, do something like\n\n\
+$ \x1B[32mnc <LiDE Host IP> 31337 > retrieved_filename\033[0m\n");
 	exit(0);
 }
 
 int main(int argc, char *argv[])
 {
 
-	be_verbose = 0;
+	be_verbose = 1;
 	FILE *filename_fd;
 	char *filename_to_serve;
-	int listen_port = htons(9999);
+	int listen_port = htons(31337);
 
 	if (argc < 2)
 		print_help();
 
 	char c;
-	while ((c = getopt(argc, argv, "hvp:")) != -1) {
+	while ((c = getopt(argc, argv, "hp:")) != -1) {
 		switch(c){
 
 			case 'h':
 				print_help();
-				break;
-			case 'v':
-				printf("Being verbose.\n");
-				be_verbose = 1;
 				break;
 			case 'p':
 				if ((optarg != NULL) && (optarg[0] != '\0')){
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
 					listen_port = htons(atoi(optarg));
 
 					if (listen_port < 1024 && getuid() > 0){
-						printf("Invalid port number. Binding to a port lower than 1024 requires superuser priveleges. You, unfortunately, are not so priveleged. Sorry!\n");
+						printf("Invalid port number. Binding to a port lower than 1024 requires root priveleges.\n");
 						exit(0);
 					}
 					else {
@@ -89,5 +90,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
 
