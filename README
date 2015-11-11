@@ -1,14 +1,9 @@
-Hermes is a very small, very simple fileserver. To host a file, do
+LiDE is a small fileserver. To host a file, do
 
-$ ./hermes my_file
+$ ./lide file_to_send
 
 then to retrieve it on another host, do something like
 
-$ nc <server host> 9999 > my_file
+$ nc <LiDE host> 9999 > file_to_receive
 
-Hermes defaults to TCP/9999, but the port can be specified with -p.
-If you want a (limited) amount of verbosity, use -v.
-
-I wrote this for fun. If you like it then please feel free to email me at joshualockhart ( AT ) gmail ( DOT ) com. 
-
-If you like a portion of the code and want to copy and paste it to use in your project, please email me with a copy of said project. I won't be upset, I'm just interested in what you're working on. :)
+LiDE defaults to TCP/9999, but the port can be specified with -p.
