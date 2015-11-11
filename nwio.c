@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
-#include "hermes.h"
+#include "LiDE.h"
 
 /*
  * Send the file to the currently connected client, return number of bytes sent or 0 on error. At the minute

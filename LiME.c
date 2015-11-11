@@ -5,10 +5,10 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <sys/types.h>
-#include "hermes.h"
+#include "LiDE.h"
 
 void print_help(void){
-	printf("Hermes - v0.2\n\nhermes <filename> [-h] [-p <port>] \n \
+	printf("LiDE - v0.0.1.1 \n \
 			-h: Prints this help.\n \
 			-v: Be verbose.\n \
 			-p: Specify a port to listen on. Default 9999.\n");
@@ -89,5 +89,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
 
