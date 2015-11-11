@@ -4,6 +4,6 @@ $ ./lide file_to_send
 
 then to retrieve it on another host, do something like
 
-$ nc <LiDE host> 9999 > file_to_receive
+$ nc <LiDE host> 31337 > file_to_receive
 
-LiDE defaults to TCP/9999, but the port can be specified with -p.
+LiDE defaults to TCP/31337, but the port can be specified with -p.
