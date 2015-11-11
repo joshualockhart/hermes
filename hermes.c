@@ -8,7 +8,7 @@
 #include "hermes.h"
 
 void print_help(void){
-	printf("Hermes - v0.1\n\nhermes <filename> [-h] [-p <port>] \n \
+	printf("Hermes - v0.2\n\nhermes <filename> [-h] [-p <port>] \n \
 			-h: Prints this help.\n \
 			-v: Be verbose.\n \
 			-p: Specify a port to listen on. Default 9999.\n");
