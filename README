@@ -1,4 +1,7 @@
-Hermes is a very small, very simple fileserver. To host a file, do
+Hermes is a very small, very simple fileserver. 
+Forked from https://github.com/joshualockhart/hermes
+
+To host a file, do
 
 $ ./hermes my_file
 
@@ -9,6 +12,8 @@ $ nc <server host> 9999 > my_file
 Hermes defaults to TCP/9999, but the port can be specified with -p.
 If you want a (limited) amount of verbosity, use -v.
 
-I wrote this for fun. If you like it then please feel free to email me at joshualockhart ( AT ) gmail ( DOT ) com. 
+Joshua Lockhart wrote this for fun. 
+If you like it then please feel free to email him at joshualockhart ( AT ) gmail ( DOT ) com. 
 
-If you like a portion of the code and want to copy and paste it to use in your project, please email me with a copy of said project. I won't be upset, I'm just interested in what you're working on. :)
+If you like a portion of the code and want to copy and paste it to use in your project, please email or fork him with a copy of said project. 
+He won't be upset, just interested in what you're working on. :)
